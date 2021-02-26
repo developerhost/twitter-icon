@@ -1,56 +1,99 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-container class="grey lighten-5 pa-0 ma-5">
+      <div class="border mx-5">
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+      <v-img
+        alt="Vuetify Logo"
+        class="shrink mr-2"
+        contain
+        src="./assets/img/twitter-social-media-icon-design-template-vector-png_127015-removebg-preview.png"
+        transition="scale-transition"
+        width="60"
+      />
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+      <div class="subtitle-1 font-weight-bold">
+        Twitterアイコンメーカー
       </div>
+    </div>
+      <v-row no-gutters class="justify-center">
+        <v-layout wrap>
 
-      <v-spacer></v-spacer>
+        
+        <v-col cols="2" sm="2" class="pa-0 mr-2">
+                <v-img
+        alt="Vuetify Logo"
+        class="shrink pa-0"
+        contain
+        src="./assets/img/origin_0226025355.png"
+        transition="scale-transition"
+        width="100"
+      />
+        </v-col>
+        <v-col cols="2" sm="2" class="pa-0 mr-2">
+                <v-img
+        alt="Vuetify Logo"
+        class="shrink mr-2"
+        contain
+        src="./assets/img/DM_0226030226.png"
+        transition="scale-transition"
+        width="100"
+      />
+        </v-col>
+        <v-col cols="2" sm="2" class="pa-0 mr-2">
+                <v-img
+        alt="Vuetify Logo"
+        class="shrink mr-2"
+        contain
+        src="./assets/img/ツイキャス_0226025842.png"
+        transition="scale-transition"
+        width="100"
+      />
+        </v-col>
+        <v-col cols="2" sm="2" class="pa-0 mr-2">
+                <v-img
+        alt="Vuetify Logo"
+        class="shrink mr-2"
+        contain
+        src="./assets/img/ネタツイ_0226030909.png"
+        transition="scale-transition"
+        width="100"
+      />
+        </v-col>
+        <v-col cols="2" sm="2" class="pa-0 mr-2">
+                <v-img
+        alt="Vuetify Logo"
+        class="shrink mr-2"
+        contain
+        src="./assets/img/フォロバ_0226030600.png"
+        transition="scale-transition"
+        width="100"
+      />
+        </v-col>
+        </v-layout>
+        
+        <div class="subtitle-1 font-weight-bold mt-5">
+        ＼簡単にアイコンに文字入れできます／
+      </div>
+      </v-row>
+      </div>
+    </v-container>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <Main />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Main from "./components/Main";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-    HelloWorld,
+    Main,
   },
 
   data: () => ({
@@ -58,3 +101,11 @@ export default {
   }),
 };
 </script>
+
+<style>
+.border{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+}
+</style>
