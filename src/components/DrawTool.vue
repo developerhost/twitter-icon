@@ -2,7 +2,7 @@
   <div>
     <h1>画像を表示</h1>
     <div id="canvas-area">
-      <canvas id="myCanvas" width="300px" height="300px"></canvas>
+      <canvas id="myCanvas" width="300px" height="300px" class="canvas"></canvas>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
     this.context.lineJoin = "round";
     this.context.lineWidth = 5;
     this.context.strokeStyle = "#000000";
-    this.loadImage(this.context)
+    this.loadImage();
   },
   methods: {
     //キャンバスに画像を描画
@@ -73,3 +73,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.canvas {
+  border-radius: 50%;
+}
+</style>
