@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container class="grey lighten-5 pa-0 ma-5">
+    <v-container class="grey lighten-5 pa-0 mx-auto mt-5 justify-center">
       <div class="border mx-5">
       <div class="d-flex align-center">
       <v-img

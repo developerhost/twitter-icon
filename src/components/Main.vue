@@ -1,6 +1,26 @@
 <template>
   <v-container>
     <v-row class="text-center" justify="center">
+
+      <!-- canvas -->
+      <div class="example">
+        <MyCanvas :radius="radius"/>
+        <p><input type="range" min="0" max="100" m-model.number="radius"></p>
+      </div>
+
+      <div class="img">
+        <MyCanvas :img="img"/>
+        <!-- <p><input type="range" min="0" max="100" m-model.number="radius"></p> -->
+      </div>
+
+      <!-- アップロードした画像を表示 -->
+      <div id="app">
+        <h2>画像</h2>
+        <img v-show="uploadedImage" :scr="uploadedImage" />
+        <input type="file" v-on:change="onFileChange">
+      </div>
+
+
       <v-col cols="12">
         <v-img
           alt="Vuetify Logo"
@@ -157,9 +177,31 @@
 </template>
 
 <script>
+// キャンバス用コンポーネントの読み込み
+import MyCanvas from './MyCanvas.vue'
 export default {
+  components: {
+    MyCanvas
+  },
   name: "Main",
-
-  data: () => ({}),
+  el: '#app',
+  data: () => ({
+    radius: 50,
+    uploadedImage: '',
+  }),
+  methods: {
+    onfileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      this.createImage(files[0]);
+    },
+    // アップロードした画像を表示
+    createImage(file) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        this.uploadedImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 };
 </script>
