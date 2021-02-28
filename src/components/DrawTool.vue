@@ -30,20 +30,21 @@ export default {
     this.context.lineJoin = "round";
     this.context.lineWidth = 5;
     this.context.strokeStyle = "#000000";
+    this.loadImage(this.canvas)
   },
   methods: {
     //キャンバスに画像を描画
-    loadImage: function() {
+    loadImage: function(canvas) {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
-      image.src = "../assets/img/img.jpg";
+      image.src = "/img/img.jpg";
       image.onload = function() {
         //画像ロードが完了してからキャンバスの準備をする
-        var canvas = document.querySelector("#myCanvas");
-        var ctx = canvas.getContext("2d");
+       
         //キャンバスのサイズを画像サイズに合わせる
         canvas.width = image.width;
         canvas.height = image.height;
+        const ctx = canvas.getContext("2d")
         //キャンバスに画像を描画（開始位置0,0）
         ctx.drawImage(image, 0, 0);
       };
