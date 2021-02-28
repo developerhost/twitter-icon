@@ -5,7 +5,7 @@
       <!-- アップロードした画像を表示 -->
       <div id="app">
         <h2>画像</h2>
-        <img v-show="uploadedImage" :scr="uploadedImage" />
+        <img v-show="uploadedImage" :src="uploadedImage" />
         <input type="file" v-on:change="onFileChange">
         <DrawTool />
       </div>
@@ -175,12 +175,12 @@ export default {
     DrawTool
   },
   name: "Main",
-  el: '#app',
+  // el: '#app',
   data: () => ({
     uploadedImage: '',
   }),
   methods: {
-    onfileChange(e) {
+    onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       this.createImage(files[0]);
     },
