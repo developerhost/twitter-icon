@@ -30,7 +30,7 @@ export default {
     this.context.lineJoin = "round";
     this.context.lineWidth = 5;
     this.context.strokeStyle = "#000000";
-    this.loadImage(this.canvas);
+    this.loadImage(this.canvas)
   },
   methods: {
     //キャンバスに画像を描画
