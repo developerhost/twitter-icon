@@ -1,0 +1,69 @@
+<template>
+  <div>
+    <h1>画像を表示</h1>
+    <div id="canvas-area">
+      <canvas id="myCanvas" width="300px" height="300px"></canvas>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+#myCanvas {
+  border: 1px solid #000000;
+}
+</style>
+
+<script>
+export default {
+  name: "DrawTool",
+  data() {
+    return {
+      canvas: null,
+      context: null,
+      isDrag: false,
+    };
+  },
+  mounted() {
+    this.canvas = document.querySelector("#myCanvas");
+    this.context = this.canvas.getContext("2d");
+    this.context.lineCap = "round";
+    this.context.lineJoin = "round";
+    this.context.lineWidth = 5;
+    this.context.strokeStyle = "#000000";
+  },
+  methods: {
+    //キャンバスに画像を描画
+    loadImage: function() {
+      //画像を読み込んでimageオブジェクトを作成する
+      var image = new Image();
+      image.src = "../assets/img/img.jpg";
+      image.onload = function() {
+        //画像ロードが完了してからキャンバスの準備をする
+        var canvas = document.querySelector("#myCanvas");
+        var ctx = canvas.getContext("2d");
+        //キャンバスのサイズを画像サイズに合わせる
+        canvas.width = image.width;
+        canvas.height = image.height;
+        //キャンバスに画像を描画（開始位置0,0）
+        ctx.drawImage(image, 0, 0);
+      };
+    },
+
+    drawText: function(canvas_id, text_id) {
+      var canvas = document.getElementById(canvas_id);
+      var ctx = canvas.getContext("2d");
+      var text = document.getElementById(text_id);
+      //文字のスタイルを指定
+      ctx.font = "32px serif";
+      ctx.fillStyle = "#404040";
+      //文字の配置を指定（左上基準にしたければtop/leftだが、文字の中心座標を指定するのでcenter
+      ctx.textBaseline = "center";
+      ctx.textAlign = "center";
+      //座標を指定して文字を描く（座標は画像の中心に）
+      var x = canvas.width / 2;
+      var y = canvas.height / 2;
+      ctx.fillText(text.value, x, y);
+    },
+  },
+};
+</script>

@@ -2,22 +2,12 @@
   <v-container>
     <v-row class="text-center" justify="center">
 
-      <!-- canvas -->
-      <div class="example">
-        <MyCanvas :radius="radius"/>
-        <p><input type="range" min="0" max="100" m-model.number="radius"></p>
-      </div>
-
-      <div class="img">
-        <MyCanvas :img="img"/>
-        <!-- <p><input type="range" min="0" max="100" m-model.number="radius"></p> -->
-      </div>
-
       <!-- アップロードした画像を表示 -->
       <div id="app">
         <h2>画像</h2>
         <img v-show="uploadedImage" :scr="uploadedImage" />
         <input type="file" v-on:change="onFileChange">
+        <DrawTool />
       </div>
 
 
@@ -33,25 +23,25 @@
       </v-col>
     </v-row>
 
-    <v-row class="ml-2">
+     <v-row class="ml-2">
       <v-col class="mb-4">
         <div class="font-weight-medium title mb-3">
           ✏️テキスト
         </div>
         <v-text-field
-          label="テキストを入力"
-          placeholder="Placeholder"
+          placeholder="テキストを入力"
           solo
           class="mx-auto"
+          id="canvas_text"
         ></v-text-field>
-        <template>
+        <!--
           <v-row>
             <v-menu transition="slide-x-transition">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn color="primary" class="ma-2 font-weight-black" v-bind="attrs" v-on="on">
                   テンプレート
                 </v-btn>
-              </template>
+              
               <v-list>
                 <v-list-item>
                   DM返しません
@@ -71,8 +61,7 @@
               </v-list>
             </v-menu>
           </v-row>
-        </template>
-        <template>
+
           <v-row>
             <v-menu transition="slide-x-transition">
               <template v-slot:activator="{ on, attrs }">
@@ -98,12 +87,12 @@
                 </v-list-item>
               </v-list>
             </v-menu>
-          </v-row>
-        </template>
-      </v-col>
+          </v-row> -->
+        
+      </v-col> 
     </v-row>
 
-    <v-row class="ml-2">
+    <!-- <v-row class="ml-2">
       <v-col>
         <div class="font-weight-medium title mb-3">
           🎨スタイル
@@ -171,22 +160,23 @@
         >
           mdi-checkbox-marked-circle
         </v-icon>
-      </v-btn>
-      </div>
+      </v-btn> -->
+      <!-- </div> -->
   </v-container>
 </template>
 
 <script>
 // キャンバス用コンポーネントの読み込み
-import MyCanvas from './MyCanvas.vue'
+import DrawTool from './DrawTool.vue'
+
+
 export default {
   components: {
-    MyCanvas
+    DrawTool
   },
   name: "Main",
   el: '#app',
   data: () => ({
-    radius: 50,
     uploadedImage: '',
   }),
   methods: {
