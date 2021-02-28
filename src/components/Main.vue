@@ -175,7 +175,7 @@ export default {
     DrawTool
   },
   name: "Main",
-  // el: '#app',
+  
   data: () => ({
     uploadedImage: '',
   }),
