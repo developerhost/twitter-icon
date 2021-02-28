@@ -12,14 +12,14 @@
 
 
       <v-col cols="12">
-        <v-img
+        <!-- <v-img
           alt="Vuetify Logo"
           class="shrink mx-auto rounded-circle"
           contain
           src="../assets/img/img.jpg"
           transition="scale-transition"
           width="200"
-        ></v-img>
+        ></v-img> -->
       </v-col>
     </v-row>
 

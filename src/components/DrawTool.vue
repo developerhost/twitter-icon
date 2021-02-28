@@ -16,6 +16,7 @@
 <script>
 export default {
   name: "DrawTool",
+  props: ['uploadedImage'],
   data() {
     return {
       canvas: null,
@@ -37,10 +38,14 @@ export default {
     loadImage: function(canvas) {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
-      image.src = "/img/img.jpg";
+      
+      if(! this.uploadedImage) {
+        this.uploadedImage = "/img/img.jpg"
+      }
+      image.src = this.uploadedImage;
       image.onload = function() {
         //画像ロードが完了してからキャンバスの準備をする
-       
+    
         //キャンバスのサイズを画像サイズに合わせる
         canvas.width = image.width;
         canvas.height = image.height;
@@ -51,9 +56,9 @@ export default {
     },
 
     drawText: function(canvas_id, text_id) {
-      var canvas = document.getElementById(canvas_id);
-      var ctx = canvas.getContext("2d");
-      var text = document.getElementById(text_id);
+      const canvas = document.getElementById(canvas_id);
+      const ctx = canvas.getContext("2d");
+      const text = document.getElementById(text_id);
       //文字のスタイルを指定
       ctx.font = "32px serif";
       ctx.fillStyle = "#404040";
