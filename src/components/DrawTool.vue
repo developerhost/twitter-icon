@@ -39,10 +39,12 @@ export default {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
       
-      if(! this.uploadedImage) {
+      if(!this.uploadedImage) {
         this.uploadedImage = "/img/img.jpg"
+      }else{
+        image.src = this.uploadedImage;
       }
-      image.src = this.uploadedImage;
+      
       image.onload = function() {
         //画像ロードが完了してからキャンバスの準備をする
     
