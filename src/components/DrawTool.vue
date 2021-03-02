@@ -48,17 +48,15 @@ export default {
         image.src = this.uploadedImage;
       }
 
-      //リサイズ
-      if(image.width > this.max_width){
-        image.width = this.max_width;
-      }
-      if(image.height > this.max_height){
-        image.height = this.max_height;
-      }
-      
-
-      image.onload = function() {
+      image.onload = () => {
         //画像ロードが完了してからキャンバスの準備をする
+        //リサイズ
+        if(image.width > this.max_width){
+          image.width = this.max_width;
+        }
+        if(image.height > this.max_height){
+          image.height = this.max_height;
+        }
 
         //キャンバスのサイズを画像サイズに合わせる
         // canvas.width = image.width;
