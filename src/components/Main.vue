@@ -7,7 +7,7 @@
         <h2>画像</h2>
         <img v-show="uploadedImage" :src="uploadedImage" />
         <input type="file" v-on:change="onFileChange">
-        <DrawTool />
+        <DrawTool :canvas-text="canvasText" :uploadedImage="uploadedImage"/>
       </div>
 
 
@@ -33,6 +33,7 @@
           solo
           class="mx-auto"
           id="canvas_text"
+          v-model="canvasText"
         ></v-text-field>
         <!--
           <v-row>
@@ -178,6 +179,7 @@ export default {
   
   data: () => ({
     uploadedImage: '',
+    canvasText:""
   }),
   methods: {
     onFileChange(e) {
