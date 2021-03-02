@@ -1,15 +1,13 @@
 <template>
   <v-container>
     <v-row class="text-center" justify="center">
-
       <!-- アップロードした画像を表示 -->
       <div id="app">
         <h2>画像</h2>
-        <img v-show="uploadedImage" :src="uploadedImage" />
-        <input type="file" v-on:change="onFileChange">
+        <!-- <img v-show="uploadedImage" :src="uploadedImage" /> -->
+        <input type="file" v-on:change="onFileChange" />
         <DrawTool :canvas-text="canvasText" :uploadedImage="uploadedImage" />
       </div>
-
 
       <v-col cols="12">
         <!-- <v-img
@@ -23,7 +21,7 @@
       </v-col>
     </v-row>
 
-     <v-row class="ml-2">
+    <v-row class="ml-2">
       <v-col class="mb-4">
         <div class="font-weight-medium title mb-3">
           ✏️テキスト
@@ -89,8 +87,7 @@
               </v-list>
             </v-menu>
           </v-row> -->
-        
-      </v-col> 
+      </v-col>
     </v-row>
 
     <!-- <v-row class="ml-2">
@@ -162,7 +159,7 @@
           mdi-checkbox-marked-circle
         </v-icon>
       </v-btn> -->
-      <!-- </div> -->
+    <!-- </div> -->
   </v-container>
 </template>
 
@@ -176,13 +173,14 @@ export default {
     DrawTool
   },
   name: "Main",
-  
+
   data: () => ({
     uploadedImage: '',
-    canvasText:""
+    canvasText:"",
   }),
   methods: {
     onFileChange(e) {
+      
       let files = e.target.files || e.dataTransfer.files;
       this.createImage(files[0]);
     },

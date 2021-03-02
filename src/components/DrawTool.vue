@@ -2,7 +2,7 @@
   <div>
     <h1>画像を表示</h1>
     <div id="canvas-area">
-      <canvas id="myCanvas" width="300px" height="300px" class="canvas"></canvas>
+      <canvas id="myCanvas" width="150px" height="150px" class="canvas"></canvas>
     </div>
   </div>
 </template>
@@ -24,6 +24,14 @@ export default {
       isDrag: false,
     };
   },
+  watch: {
+    uploadedImage: function(){
+      this.loadImage(this.canvas)
+    },
+    canvasText: function(){
+      this.drawText(this.canvas,this.canvasText)
+    }
+  },
   mounted() {
     this.canvas = document.querySelector("#myCanvas");
     this.context = this.canvas.getContext("2d");
@@ -38,11 +46,13 @@ export default {
     loadImage: function(canvas) {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
+
        if(! this.uploadedImage) {
         image.src = "/img/img.jpg"
       }else{
         image.src = this.uploadedImage;
       }
+
       image.onload = function() {
         //画像ロードが完了してからキャンバスの準備をする
     
