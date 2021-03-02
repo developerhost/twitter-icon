@@ -24,6 +24,12 @@ export default {
       isDrag: false,
     };
   },
+  watch: {
+    everyDrawImage: function(){
+      this.loadImage()
+      this.drawText()
+    }
+  },
   mounted() {
     this.canvas = document.querySelector("#myCanvas");
     this.context = this.canvas.getContext("2d");
