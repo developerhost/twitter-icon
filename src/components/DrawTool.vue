@@ -34,30 +34,18 @@ export default {
     this.context.lineJoin = "round";
     this.context.lineWidth = 5;
     this.context.strokeStyle = "#000000";
-    this.loadImage(this.canvas)
+    this.drawImage(this.canvas)
   },
   methods: {
     //キャンバスに画像を描画
-    loadImage: function(canvas) {
-      //画像を読み込んでimageオブジェクトを作成する
-      var image = new Image();
-
-      if(! this.uploadedImage) {
-        image.src = "/img/img.jpg"
-      }else{
-        image.src = this.uploadedImage;
-      }
-
-      image.onload = () => {
-        //画像ロードが完了してからキャンバスの準備をする
-        //リサイズ
+    drawImage: async function(canvas) {
+        const image = await this.asyncLoadImage()
         if(image.width > this.max_width){
           image.width = this.max_width;
         }
         if(image.height > this.max_height){
           image.height = this.max_height;
         }
-
         //キャンバスのサイズを画像サイズに合わせる
         // canvas.width = image.width;
         // canvas.height = image.height;
@@ -68,7 +56,7 @@ export default {
         console.log(image.width);
         console.log(image.height);
         
-      };
+      // };
     },
 
     drawText: function(canvas, text) {
@@ -89,14 +77,30 @@ export default {
       ctx.fillText(text, x, y);
       console.log(text);
     },
+
+    asyncLoadImage: async function() {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = (e) => reject(e);
+        if(! this.uploadedImage) {
+          img.src = "/img/img.jpg"
+        }else{
+          img.src = this.uploadedImage;
+        }
+      });
+    }
   },
 
   watch:{
     uploadedImage: function(){
-      this.loadImage(this.canvas)
+      this.drawImage(this.canvas)
     },
     canvasText: function(){
-      this.drawText(this.canvas, this.canvasText)
+      this.context.clearRect(0, 0, 250, 250)
+      this.drawImage(this.canvas).then(()=>{
+        this.drawText(this.canvas, this.canvasText)
+      })
     }
   }
 };
