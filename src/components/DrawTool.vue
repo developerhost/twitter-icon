@@ -22,8 +22,6 @@ export default {
       canvas: null,
       context: null,
       isDrag: false,
-      max_width: 200,
-      max_height: 200
     };
   },
 
@@ -41,6 +39,8 @@ export default {
     loadImage: function(canvas) {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
+      const max_width = 300;
+      const max_height = 300;
 
       if(! this.uploadedImage) {
         image.src = "/img/img.jpg"
@@ -48,17 +48,19 @@ export default {
         image.src = this.uploadedImage;
       }
 
-      //リサイズ
-      if(image.width > this.max_width){
-        image.width = this.max_width;
-      }
-      if(image.height > this.max_height){
-        image.height = this.max_height;
-      }
+
       
 
       image.onload = function() {
         //画像ロードが完了してからキャンバスの準備をする
+
+        //リサイズ
+        if(image.width > max_width){
+          image.width = max_width;
+        }
+        if(image.height > max_height){
+          image.height = max_height;
+        }
 
         //キャンバスのサイズを画像サイズに合わせる
         // canvas.width = image.width;
@@ -66,7 +68,7 @@ export default {
         const ctx = canvas.getContext("2d")
 
         //キャンバスに画像を描画（開始位置0,0）
-        ctx.drawImage(image, 0, 0,image.width,image.height);
+        ctx.drawImage(image, -22, -18,image.width,image.height);
         console.log(image.width);
         console.log(image.height);
         
