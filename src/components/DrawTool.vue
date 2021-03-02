@@ -2,7 +2,7 @@
   <div>
     <h1>画像を表示</h1>
     <div id="canvas-area">
-      <canvas id="myCanvas" width="300px" height="300px" class="canvas"></canvas>
+      <canvas id="myCanvas" width="150px" height="150px" class="canvas"></canvas>
     </div>
   </div>
 </template>
@@ -25,9 +25,11 @@ export default {
     };
   },
   watch: {
-    everyDrawImage: function(){
-      this.loadImage()
-      this.drawText()
+    uploadedImage: function(){
+      this.loadImage(this.canvas)
+    },
+    canvasText: function(){
+      this.drawText(this.canvas,this.canvasText)
     }
   },
   mounted() {
@@ -45,8 +47,8 @@ export default {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
       
-      if(!this.uploadedImage) {
-        this.uploadedImage = "/img/img.jpg"
+       if(! this.uploadedImage) {
+        image.src = "/img/img.jpg"
       }else{
         image.src = this.uploadedImage;
       }
