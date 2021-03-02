@@ -47,7 +47,7 @@ export default {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
       
-      if(! this.uploadedImage) {
+       if(! this.uploadedImage) {
         image.src = "/img/img.jpg"
       }else{
         image.src = this.uploadedImage;
