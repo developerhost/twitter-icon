@@ -46,13 +46,13 @@ export default {
     loadImage: function(canvas) {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
-      
+
        if(! this.uploadedImage) {
         image.src = "/img/img.jpg"
       }else{
         image.src = this.uploadedImage;
       }
-      
+
       image.onload = function() {
         //画像ロードが完了してからキャンバスの準備をする
     
@@ -65,10 +65,9 @@ export default {
       };
     },
 
-    drawText: function(canvas_id, text_id) {
-      const canvas = document.getElementById(canvas_id);
+    drawText: function(canvas, text) {
       const ctx = canvas.getContext("2d");
-      const text = document.getElementById(text_id);
+      //TODO: はじめに既存文字を削除
       //文字のスタイルを指定
       ctx.font = "32px serif";
       ctx.fillStyle = "#404040";
@@ -78,9 +77,18 @@ export default {
       //座標を指定して文字を描く（座標は画像の中心に）
       var x = canvas.width / 2;
       var y = canvas.height / 2;
-      ctx.fillText(text.value, x, y);
+      ctx.fillText(text, x, y);
     },
   },
+
+  watch:{
+    uploadedImage: function(){
+      this.loadImage(this.canvas)
+    },
+    canvasText: function(){
+      this.drawText(this.canvas, this.canvasText)
+    }
+  }
 };
 </script>
 
