@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "DrawTool",
-  props: ['uploadedImage'],
+  props: ['uploadedImage',"canvasText"],
   data() {
     return {
       canvas: null,
