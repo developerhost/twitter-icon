@@ -24,14 +24,7 @@ export default {
       isDrag: false,
     };
   },
-  watch: {
-    uploadedImage: function(){
-      this.loadImage(this.canvas)
-    },
-    canvasText: function(){
-      this.drawText(this.canvas,this.canvasText)
-    }
-  },
+
   mounted() {
     this.canvas = document.querySelector("#myCanvas");
     this.context = this.canvas.getContext("2d");
@@ -46,28 +39,41 @@ export default {
     loadImage: function(canvas) {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
+      const max_width = 200;
+      const max_height = 200;
 
-       if(! this.uploadedImage) {
+      if(! this.uploadedImage) {
         image.src = "/img/img.jpg"
       }else{
         image.src = this.uploadedImage;
       }
 
+      //リサイズ
+      if(image.width > max_width){
+        image.width = max_width;
+      }
+      if(image.height > max_height){
+        image.height = max_height;
+      }
+      
+
       image.onload = function() {
         //画像ロードが完了してからキャンバスの準備をする
-    
+
         //キャンバスのサイズを画像サイズに合わせる
         canvas.width = image.width;
         canvas.height = image.height;
         const ctx = canvas.getContext("2d")
+
         //キャンバスに画像を描画（開始位置0,0）
-        ctx.drawImage(image, 0, 0);
+        ctx.drawImage(image, 0, 0,image.width,image.height);
       };
     },
 
     drawText: function(canvas, text) {
       const ctx = canvas.getContext("2d");
       //TODO: はじめに既存文字を削除
+      
       //文字のスタイルを指定
       ctx.font = "32px serif";
       ctx.fillStyle = "#404040";
@@ -77,7 +83,10 @@ export default {
       //座標を指定して文字を描く（座標は画像の中心に）
       var x = canvas.width / 2;
       var y = canvas.height / 2;
+
+      // ctx.clearRect();
       ctx.fillText(text, x, y);
+      console.log(text);
     },
   },
 
