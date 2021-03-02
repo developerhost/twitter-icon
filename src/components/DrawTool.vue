@@ -2,7 +2,7 @@
   <div>
     <h1>画像を表示</h1>
     <div id="canvas-area">
-      <canvas id="myCanvas" width="150px" height="150px" class="canvas"></canvas>
+      <canvas id="myCanvas" width="250px" height="250px" class="canvas"></canvas>
     </div>
   </div>
 </template>
@@ -22,6 +22,8 @@ export default {
       canvas: null,
       context: null,
       isDrag: false,
+      max_width: 200,
+      max_height: 200
     };
   },
 
@@ -39,8 +41,6 @@ export default {
     loadImage: function(canvas) {
       //画像を読み込んでimageオブジェクトを作成する
       var image = new Image();
-      const max_width = 200;
-      const max_height = 200;
 
       if(! this.uploadedImage) {
         image.src = "/img/img.jpg"
@@ -49,11 +49,11 @@ export default {
       }
 
       //リサイズ
-      if(image.width > max_width){
-        image.width = max_width;
+      if(image.width > this.max_width){
+        image.width = this.max_width;
       }
-      if(image.height > max_height){
-        image.height = max_height;
+      if(image.height > this.max_height){
+        image.height = this.max_height;
       }
       
 
@@ -61,12 +61,15 @@ export default {
         //画像ロードが完了してからキャンバスの準備をする
 
         //キャンバスのサイズを画像サイズに合わせる
-        canvas.width = image.width;
-        canvas.height = image.height;
+        // canvas.width = image.width;
+        // canvas.height = image.height;
         const ctx = canvas.getContext("2d")
 
         //キャンバスに画像を描画（開始位置0,0）
         ctx.drawImage(image, 0, 0,image.width,image.height);
+        console.log(image.width);
+        console.log(image.height);
+        
       };
     },
 
