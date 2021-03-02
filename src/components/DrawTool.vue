@@ -32,48 +32,26 @@ export default {
     this.context.lineJoin = "round";
     this.context.lineWidth = 5;
     this.context.strokeStyle = "#000000";
-    this.loadImage(this.canvas)
+    this.drawImage(this.canvas)
   },
   methods: {
     //キャンバスに画像を描画
-    loadImage: function(canvas) {
-      //画像を読み込んでimageオブジェクトを作成する
-      var image = new Image();
-      const max_width = 300;
-      const max_height = 300;
-
-      if(! this.uploadedImage) {
-        image.src = "/img/img.jpg"
-      }else{
-        image.src = this.uploadedImage;
-      }
-
-
-      
-
-      image.onload = function() {
-        //画像ロードが完了してからキャンバスの準備をする
-
-        //リサイズ
-        if(image.width > max_width){
-          image.width = max_width;
+      drawImage: async function(canvas) {
+        const image = await this.asyncLoadOmage()
+        if(image.width > this.max_width){
+          image.width = this.max_width;
         }
-        if(image.height > max_height){
-          image.height = max_height;
+        if(image.height > this.max_height){
+          image.height = this.max_height;
         }
-
-        //キャンバスのサイズを画像サイズに合わせる
-        // canvas.width = image.width;
-        // canvas.height = image.height;
         const ctx = canvas.getContext("2d")
 
-        //キャンバスに画像を描画（開始位置0,0）
+        // キャンバスに画像を描画（開始位置0,0）
         ctx.drawImage(image, -22, -18,image.width,image.height);
         console.log(image.width);
         console.log(image.height);
-        
-      };
-    },
+      },
+    
 
     drawText: function(canvas, text) {
       const ctx = canvas.getContext("2d");
@@ -93,14 +71,30 @@ export default {
       ctx.fillText(text, x, y);
       console.log(text);
     },
+
+    asyncLoadImage: async function() {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = (e) => reject(e);
+        if(! this.uploadedImage) {
+          img.src = "/img/img.jpg"
+        }else{
+          img.src = this.uploadedImage;
+        }
+      });
+    }
   },
 
   watch:{
     uploadedImage: function(){
-      this.loadImage(this.canvas)
+      this.drawImage(this.canvas)
     },
     canvasText: function(){
-      this.drawText(this.canvas, this.canvasText)
+      this.context.clearRect(0, 0, 250, 250)
+      this.drawImage(this.canvas).then(()=>{
+        this.drawText(this.canvas, this.canvasText)
+      })
     }
   }
 };
