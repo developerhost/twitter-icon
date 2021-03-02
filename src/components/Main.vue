@@ -7,7 +7,7 @@
         <h2>画像</h2>
         <img v-show="uploadedImage" :src="uploadedImage" />
         <input type="file" v-on:change="onFileChange">
-        <DrawTool :canvas-text="canvasText"/>
+        <DrawTool :canvas-text="canvasText" :uploadedImage="uploadedImage"/>
       </div>
 
 
