@@ -4,20 +4,11 @@
       <!-- アップロードした画像を表示 -->
       <div id="app">
         <h2>画像</h2>
-        <!-- <img v-show="uploadedImage" :src="uploadedImage" /> -->
         <input type="file" v-on:change="onFileChange" />
         <DrawTool :canvas-text="canvasText" :uploadedImage="uploadedImage" />
       </div>
 
       <v-col cols="12">
-        <!-- <v-img
-          alt="Vuetify Logo"
-          class="shrink mx-auto rounded-circle"
-          contain
-          src="../assets/img/img.jpg"
-          transition="scale-transition"
-          width="200"
-        ></v-img> -->
       </v-col>
     </v-row>
 
@@ -33,16 +24,17 @@
           id="canvas_text"
           v-model="canvasText"
         ></v-text-field>
-        <!--
+        
           <v-row>
             <v-menu transition="slide-x-transition">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn color="primary" class="ma-2 font-weight-black" v-bind="attrs" v-on="on">
                   テンプレート
                 </v-btn>
+              </template>
               
               <v-list>
-                <v-list-item>
+                <v-list-item @click="changeDm" :templateText = "templateText">
                   DM返しません
                 </v-list-item>
                 <v-list-item>
@@ -69,7 +61,7 @@
                 </v-btn>
               </template>
               <v-list>
-                <v-list-item>
+                <v-list-item @click="chageMs" :fontVar="fontVar">
                   あおぞら明朝
                 </v-list-item>
                 <v-list-item>
@@ -86,11 +78,11 @@
                 </v-list-item>
               </v-list>
             </v-menu>
-          </v-row> -->
+          </v-row> 
       </v-col>
     </v-row>
 
-    <!-- <v-row class="ml-2">
+    <v-row class="ml-2">
       <v-col>
         <div class="font-weight-medium title mb-3">
           🎨スタイル
@@ -158,8 +150,8 @@
         >
           mdi-checkbox-marked-circle
         </v-icon>
-      </v-btn> -->
-    <!-- </div> -->
+      </v-btn> 
+    </div>
   </v-container>
 </template>
 
@@ -177,6 +169,8 @@ export default {
   data: () => ({
     uploadedImage: '',
     canvasText:"",
+    templateText: '',
+    fontVar: '',
   }),
   methods: {
     onFileChange(e) {
@@ -191,6 +185,12 @@ export default {
         this.uploadedImage = e.target.result;
       };
       reader.readAsDataURL(file);
+    },
+    changeDm: function() {
+      this.templateText = 'DM返しません'
+    },
+    changeMs: function() {
+      this.fontVar = 'MS 明朝'
     }
   }
 };

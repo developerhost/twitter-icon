@@ -16,12 +16,14 @@
 <script>
 export default {
   name: "DrawTool",
-  props: ['uploadedImage',"canvasText"],
+  props: ['uploadedImage',"canvasText","templateText","fontVar"],
   data() {
     return {
       canvas: null,
       context: null,
       isDrag: false,
+      max_width: 250,
+      max_height: 250
     };
   },
 
@@ -37,17 +39,18 @@ export default {
   methods: {
     //キャンバスに画像を描画
       drawImage: async function(canvas) {
-        const image = await this.asyncLoadOmage()
-        if(image.width > this.max_width){
-          image.width = this.max_width;
+        const image = await this.asyncLoadImage()
+        const self = this
+        if(image.width > self.max_width){
+          image.width = self.max_width;
         }
-        if(image.height > this.max_height){
-          image.height = this.max_height;
+        if(image.height > self.max_height){
+          image.height = self.max_height;
         }
         const ctx = canvas.getContext("2d")
 
         // キャンバスに画像を描画（開始位置0,0）
-        ctx.drawImage(image, -22, -18,image.width,image.height);
+        ctx.drawImage(image, 0, 0,image.width,image.height);
         console.log(image.width);
         console.log(image.height);
       },
@@ -58,7 +61,13 @@ export default {
       //TODO: はじめに既存文字を削除
       
       //文字のスタイルを指定
-      ctx.font = "32px serif";
+      if(fontVar = ""){
+        ctx.font = "32px serif"; //ここを変数に
+      }else{
+        ctx.font = fontVar
+      }
+      // ctx.font = fontVar;
+
       ctx.fillStyle = "#404040";
       //文字の配置を指定（左上基準にしたければtop/leftだが、文字の中心座標を指定するのでcenter
       ctx.textBaseline = "center";
@@ -67,9 +76,17 @@ export default {
       var x = canvas.width / 2;
       var y = canvas.height / 2;
 
-      // ctx.clearRect();
-      ctx.fillText(text, x, y);
-      console.log(text);
+      //textのテンプレート
+      if(templateText = "") {
+        // ctx.clearRect();
+        ctx.fillText(text, x, y);
+        console.log(text);
+      }else {
+        text = templateText;
+        ctx.fillText(text, x, y);
+        console.log(text);  
+      }
+
     },
 
     asyncLoadImage: async function() {
