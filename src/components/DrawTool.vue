@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "DrawTool",
-  props: ['uploadedImage',"canvasText","templateText","fontVar"],
+  props: ['uploadedImage',"canvasText","templateText","fontVar","colors"],
   data() {
     return {
       canvas: null,
@@ -64,7 +64,7 @@ export default {
       if(fontVar = ""){
         ctx.font = "32px serif"; //ここを変数に
       }else{
-        ctx.font = fontVar
+        ctx.font = `32px ${fontVar}`
       }
       // ctx.font = fontVar;
 

@@ -134,6 +134,7 @@
         <div>
           文字の色
           </div>    
+          <chrome-picker v-model="colors" />
       </v-col>
       </v-row>
 
@@ -158,11 +159,13 @@
 <script>
 // キャンバス用コンポーネントの読み込み
 import DrawTool from './DrawTool.vue'
+import { Chrome } from 'vue-color'
 
 
 export default {
   components: {
-    DrawTool
+    DrawTool,
+    'chrome-picker': Chrome,
   },
   name: "Main",
 
@@ -171,6 +174,9 @@ export default {
     canvasText:"",
     templateText: '',
     fontVar: '',
+    colors: {
+      "hex": "#194d33",
+    },
   }),
   methods: {
     onFileChange(e) {
