@@ -100,6 +100,13 @@ export default {
           img.src = this.uploadedImage;
         }
       });
+    },
+    //ここでtemplateTextとfontVarをfunctionとして定義すべき？？
+    templateText: function(){
+      //ここの中身がわからない
+    },
+    fontVar: function() {
+      //ここの中身がわからない
     }
   },
 
