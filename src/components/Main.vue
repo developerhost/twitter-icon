@@ -5,7 +5,7 @@
       <div id="app">
         <h2>画像</h2>
         <input type="file" v-on:change="onFileChange" />
-        <DrawTool :canvas-text="canvasText" :uploadedImage="uploadedImage" />
+        <DrawTool :canvas-text="canvasText" :uploadedImage="uploadedImage" :fontVar="fontVar"/>
       </div>
 
       <v-col cols="12">
@@ -34,7 +34,7 @@
               </template>
               
               <v-list>
-                <v-list-item @click="changeDm" :templateText = "templateText">
+                <v-list-item @click="changeMessage('DM返しません')">
                   DM返しません
                 </v-list-item>
                 <v-list-item>
@@ -61,7 +61,7 @@
                 </v-btn>
               </template>
               <v-list>
-                <v-list-item @click="chageMs" :fontVar="fontVar">
+                <v-list-item @click="changeFont('あおぞら明朝')" >
                   あおぞら明朝
                 </v-list-item>
                 <v-list-item>
@@ -172,7 +172,6 @@ export default {
   data: () => ({
     uploadedImage: '',
     canvasText:"",
-    templateText: '',
     fontVar: '',
     colors: {
       "hex": "#194d33",
@@ -192,11 +191,11 @@ export default {
       };
       reader.readAsDataURL(file);
     },
-    changeDm: function() {
-      this.templateText = 'DM返しません'
+    changeMessage: function(newText) {
+      this.canvasText = newText
     },
-    changeMs: function() {
-      this.fontVar = 'MS 明朝'
+    changeFont: function(newFontName) {
+      this.fontVar = newFontName
     }
   }
 };

@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "DrawTool",
-  props: ['uploadedImage',"canvasText","templateText","fontVar","colors"],
+  props: ['uploadedImage',"canvasText","fontVar","colors"],
   data() {
     return {
       canvas: null,
@@ -61,10 +61,10 @@ export default {
       //TODO: はじめに既存文字を削除
       
       //文字のスタイルを指定
-      if(fontVar = ""){
+      if(this.fontVar == ""){
         ctx.font = "32px serif"; //ここを変数に
       }else{
-        ctx.font = `32px ${fontVar}`
+        ctx.font = `32px ${this.fontVar}`
       }
       // ctx.font = fontVar;
 
@@ -76,17 +76,8 @@ export default {
       var x = canvas.width / 2;
       var y = canvas.height / 2;
 
-      //textのテンプレート
-      if(templateText = "") {
-        // ctx.clearRect();
-        ctx.fillText(text, x, y);
-        console.log(text);
-      }else {
-        text = templateText;
-        ctx.fillText(text, x, y);
-        console.log(text);  
-      }
-
+      ctx.fillText(text, x, y);
+      console.log(text);  
     },
 
     asyncLoadImage: async function() {
@@ -101,20 +92,21 @@ export default {
         }
       });
     },
-    //ここでtemplateTextとfontVarをfunctionとして定義すべき？？
-    templateText: function(){
-      //ここの中身がわからない
-    },
-    fontVar: function() {
-      //ここの中身がわからない
-    }
   },
 
   watch:{
     uploadedImage: function(){
       this.drawImage(this.canvas)
     },
+
     canvasText: function(){
+      this.context.clearRect(0, 0, 250, 250)
+      this.drawImage(this.canvas).then(()=>{
+        this.drawText(this.canvas, this.canvasText)
+      })
+    },
+
+    fontVar: function(){
       this.context.clearRect(0, 0, 250, 250)
       this.drawImage(this.canvas).then(()=>{
         this.drawText(this.canvas, this.canvasText)
