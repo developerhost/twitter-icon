@@ -37,16 +37,16 @@
                 <v-list-item @click="changeMessage('DM返しません')">
                   DM返しません
                 </v-list-item>
-                <v-list-item>
+                <v-list-item @click="changeMessage('フォロバします')">
                   フォロバします
                 </v-list-item>
-                <v-list-item>
+                <v-list-item @click="changeMessage('ツイキャス')">
                   ツイキャス
                 </v-list-item>
-                <v-list-item>
+                <v-list-item @click="changeMessage('ネタツイ垢')">
                   ネタツイ垢
                 </v-list-item>
-                <v-list-item>
+                <v-list-item @click="changeMessage('リプ歓迎')">
                   リプ歓迎
                 </v-list-item>
               </v-list>
@@ -64,17 +64,17 @@
                 <v-list-item @click="changeFont('あおぞら明朝')" >
                   あおぞら明朝
                 </v-list-item>
-                <v-list-item>
-                  851チカラヅヨク
+                <v-list-item @click="changeFont('ヒラギノ丸ゴ ProN')">
+                  ヒラギノ丸ゴ ProN
                 </v-list-item>
-                <v-list-item>
-                  JKゴシック
+                <v-list-item @click="changeFont('あくあフォント')">
+                  あくあフォント
                 </v-list-item>
-                <v-list-item>
-                  自由帳フォント
+                <v-list-item @click="changeFont('クレー')">
+                  クレー
                 </v-list-item>
-                <v-list-item>
-                  花鳥風月
+                <v-list-item @click="changeFont('けいふぉんと仮名')">
+                  けいふぉんと仮名
                 </v-list-item>
               </v-list>
             </v-menu>
@@ -197,6 +197,16 @@ export default {
     changeFont: function(newFontName) {
       this.fontVar = newFontName
     }
+  },
+  computed: {
+  colors: {
+    get () {
+      return this.colors
+    },
+    set (value) {
+      this.colors = value
+    }
   }
-};
+},
+}
 </script>

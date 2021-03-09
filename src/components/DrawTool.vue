@@ -62,13 +62,17 @@ export default {
       
       //文字のスタイルを指定
       if(this.fontVar == ""){
-        ctx.font = "32px serif"; //ここを変数に
+        ctx.font = "32px San Francisco"; //ここを変数に
       }else{
         ctx.font = `32px ${this.fontVar}`
       }
       // ctx.font = fontVar;
 
-      ctx.fillStyle = "#404040";
+      if(colors == ""){
+        ctx.fillStyle = "#404040";
+      }else{
+        ctx.fillStyle = colors;
+      }
       //文字の配置を指定（左上基準にしたければtop/leftだが、文字の中心座標を指定するのでcenter
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
@@ -76,8 +80,8 @@ export default {
       var x = canvas.width / 2;
       var y = canvas.height / 2;
 
-      ctx.fillText(text, x, y);
-      console.log(text);  
+        ctx.fillText(text, x, y);
+        console.log(text);  
     },
 
     asyncLoadImage: async function() {
@@ -98,7 +102,6 @@ export default {
     uploadedImage: function(){
       this.drawImage(this.canvas)
     },
-
     canvasText: function(){
       this.context.clearRect(0, 0, 250, 250)
       this.drawImage(this.canvas).then(()=>{
@@ -111,8 +114,14 @@ export default {
       this.drawImage(this.canvas).then(()=>{
         this.drawText(this.canvas, this.canvasText)
       })
+    },
+    colors: function() {
+      this.context.clearRect(0, 0, 250, 250)
+      this.drawImage(this.canvas).then(()=>{
+      this.drawText(this.canvas, this.canvasText)
+      })
     }
-  }
+  },
 };
 </script>
 
