@@ -72,10 +72,10 @@ export default {
       }
       // ctx.font = fontVar;
 
-      if (colors == "") {
+      if (this.colors == "") {
         ctx.fillStyle = "#404040";
       } else {
-        ctx.fillStyle = colors;
+        ctx.fillStyle = this.colors;
       }
       //文字の配置を指定（左上基準にしたければtop/leftだが、文字の中心座標を指定するのでcenter
       ctx.textBaseline = "center";

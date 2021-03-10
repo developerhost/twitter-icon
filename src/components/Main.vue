@@ -9,6 +9,7 @@
           :canvas-text="canvasText"
           :uploadedImage="uploadedImage"
           :fontVar="fontVar"
+          :colors="colors.hex"
         />
       </div>
 
@@ -186,16 +187,6 @@ export default {
     },
     changeFont: function (newFontName) {
       this.fontVar = newFontName;
-    },
-  },
-  computed: {
-    colors: {
-      get() {
-        return this.colors;
-      },
-      set(value) {
-        this.colors = value;
-      },
     },
   },
 };
