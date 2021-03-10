@@ -107,6 +107,7 @@
             src="../assets/img/DM返しません_0226114010.png"
             transition="scale-transition"
             width="100"
+            @click="changeStyleDark()"
           />
         </v-col>
         <v-col cols="3" sm="2" class="pa-0 mr-5">
@@ -188,6 +189,10 @@ export default {
     changeFont: function (newFontName) {
       this.fontVar = newFontName;
     },
+    changeStyleDark: function(newColors){
+      this.colors = newColors;
+      console.log("change");
+    }
   },
 };
 </script>

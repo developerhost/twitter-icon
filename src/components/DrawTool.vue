@@ -66,9 +66,9 @@ export default {
 
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "32px San Francisco"; //ここを変数に
+        ctx.font = "bold 32px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `32px ${this.fontVar}`;
+        ctx.font = `bold 32px ${this.fontVar}`;
       }
       // ctx.font = fontVar;
 
@@ -86,6 +86,22 @@ export default {
 
       ctx.fillText(text, x, y);
       console.log(text);
+    },
+
+    drawStyle: function (canvas, text) {
+      const ctx = canvas.getContext("2d");
+
+      ctx.beginPath();
+
+      ctx.rect(50,50,75,75);
+      ctx.fillStyle = "#646766"
+      ctx.globalAlpha = 0.5;
+
+      ctx.fill();
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillText(text)
+      console.log(text)
     },
 
     asyncLoadImage: async function () {
