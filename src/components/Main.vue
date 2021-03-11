@@ -3,7 +3,6 @@
     <v-row class="text-center" justify="center">
       <!-- アップロードした画像を表示 -->
       <div id="app">
-        <h2>画像</h2>
         <input type="file" v-on:change="onFileChange" />
         <DrawTool
           :canvas-text="canvasText"
@@ -107,7 +106,7 @@
             src="../assets/img/DM返しません_0226114010.png"
             transition="scale-transition"
             width="100"
-            @click="changeStyleDark()"
+            @click="changeStyleDark(changeColor, changeVisibility)"
           />
         </v-col>
         <v-col cols="3" sm="2" class="pa-0 mr-5">
@@ -169,6 +168,8 @@ export default {
     colors: {
       hex: "#194d33",
     },
+    changeColor: "#FFFFFF",
+    changeVisibility: 0.5,
   }),
   methods: {
     onFileChange(e) {

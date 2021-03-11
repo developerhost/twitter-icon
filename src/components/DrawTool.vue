@@ -21,7 +21,7 @@
 <script>
 export default {
   name: "DrawTool",
-  props: ["uploadedImage", "canvasText", "fontVar", "colors"],
+  props: ["uploadedImage", "canvasText", "fontVar", "colors","changeColor", "changeVisibility"],
   data() {
     return {
       canvas: null,
@@ -70,7 +70,7 @@ export default {
       } else {
         ctx.font = `bold 32px ${this.fontVar}`;
       }
-      // ctx.font = fontVar;
+      
 
       if (this.colors == "") {
         ctx.fillStyle = "#404040";
@@ -95,13 +95,13 @@ export default {
 
       ctx.rect(50,50,75,75);
       ctx.fillStyle = "#646766"
-      ctx.globalAlpha = 0.5;
+      ctx.globalAlpha = this.changeVisibility;
 
       ctx.fill();
 
-      ctx.fillStyle = "#FFFFFF";
-      ctx.fillText(text)
-      console.log(text)
+      ctx.fillStyle = this.changeColor;
+      ctx.fillText(text);
+      console.log(text);
     },
 
     asyncLoadImage: async function () {
