@@ -21,7 +21,14 @@
 <script>
 export default {
   name: "DrawTool",
-  props: ["uploadedImage", "canvasText", "fontVar", "colors","changeColor", "changeVisibility"],
+  props: [
+    "uploadedImage",
+    "canvasText",
+    "fontVar",
+    "colors",
+    "fillColor",
+    "globalAlpha",
+  ],
   data() {
     return {
       canvas: null,
@@ -62,15 +69,12 @@ export default {
 
     drawText: function (canvas, text) {
       const ctx = canvas.getContext("2d");
-      //TODO: はじめに既存文字を削除
-
       //文字のスタイルを指定
       if (this.fontVar == "") {
         ctx.font = "bold 32px San Francisco"; //ここを変数に
       } else {
         ctx.font = `bold 32px ${this.fontVar}`;
       }
-      
 
       if (this.colors == "") {
         ctx.fillStyle = "#404040";
@@ -88,20 +92,13 @@ export default {
       console.log(text);
     },
 
-    drawStyle: function (canvas, text) {
+    drawStyle: function (canvas) {
+      console.debug("drawStyle : ", this.globalAlpha, this.fillColor);
       const ctx = canvas.getContext("2d");
-
-      ctx.beginPath();
-
-      ctx.rect(50,50,75,75);
-      ctx.fillStyle = "#646766"
-      ctx.globalAlpha = this.changeVisibility;
-
-      ctx.fill();
-
-      ctx.fillStyle = this.changeColor;
-      ctx.fillText(text);
-      console.log(text);
+      const rgb = this.hex2rgb(this.fillColor);
+      console.log("rgb :", rgb);
+      ctx.fillStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.globalAlpha})`;
+      ctx.fillRect(50, 50, 75, 75);
     },
 
     asyncLoadImage: async function () {
@@ -116,6 +113,30 @@ export default {
         }
       });
     },
+
+    hex2rgb: function (hex) {
+      if (hex.slice(0, 1) == "#") hex = hex.slice(1);
+      if (hex.length == 3)
+        hex =
+          hex.slice(0, 1) +
+          hex.slice(0, 1) +
+          hex.slice(1, 2) +
+          hex.slice(1, 2) +
+          hex.slice(2, 3) +
+          hex.slice(2, 3);
+
+      return [hex.slice(0, 2), hex.slice(2, 4), hex.slice(4, 6)].map((str) => {
+        return parseInt(str, 16);
+      });
+    },
+
+    reDraw: function () {
+      this.context.clearRect(0, 0, 250, 250);
+      this.drawImage(this.canvas).then(() => {
+        this.drawStyle(this.canvas);
+        this.drawText(this.canvas, this.canvasText);
+      });
+    },
   },
 
   watch: {
@@ -123,23 +144,20 @@ export default {
       this.drawImage(this.canvas);
     },
     canvasText: function () {
-      this.context.clearRect(0, 0, 250, 250);
-      this.drawImage(this.canvas).then(() => {
-        this.drawText(this.canvas, this.canvasText);
-      });
+      this.reDraw();
     },
 
     fontVar: function () {
-      this.context.clearRect(0, 0, 250, 250);
-      this.drawImage(this.canvas).then(() => {
-        this.drawText(this.canvas, this.canvasText);
-      });
+      this.reDraw();
     },
     colors: function () {
-      this.context.clearRect(0, 0, 250, 250);
-      this.drawImage(this.canvas).then(() => {
-        this.drawText(this.canvas, this.canvasText);
-      });
+      this.reDraw();
+    },
+    globalAlpha: function () {
+      this.reDraw();
+    },
+    fillColor: function () {
+      this.reDraw();
     },
   },
 };
