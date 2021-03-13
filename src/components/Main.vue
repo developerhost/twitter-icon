@@ -9,6 +9,8 @@
           :uploadedImage="uploadedImage"
           :fontVar="fontVar"
           :colors="colors.hex"
+          :fill-color="fillColor.hex"
+          :global-alpha="globalAlpha"
         />
       </div>
 
@@ -106,7 +108,7 @@
             src="../assets/img/DM返しません_0226114010.png"
             transition="scale-transition"
             width="100"
-            @click="changeStyleDark(changeColor, changeVisibility)"
+            @click="changeStyle('#FFFFFF', '#646766', 0.5)"
           />
         </v-col>
         <v-col cols="3" sm="2" class="pa-0 mr-5">
@@ -168,8 +170,10 @@ export default {
     colors: {
       hex: "#194d33",
     },
-    changeColor: "#FFFFFF",
-    changeVisibility: 0.5,
+    fillColor:{
+      hex:"#000000"
+    },
+    globalAlpha: 0,
   }),
   methods: {
     onFileChange(e) {
@@ -190,10 +194,15 @@ export default {
     changeFont: function (newFontName) {
       this.fontVar = newFontName;
     },
-    changeStyleDark: function(newColors){
-      this.colors = newColors;
+    changeStyle: function (fontColorStr, fillColorStr, globalAlpha) {
+      this.colors.hex = fontColorStr;
+      this.fillColor.hex = fillColorStr;
+      this.globalAlpha = globalAlpha;
       console.log("change");
-    }
+    },
   },
 };
 </script>
+
+
+
