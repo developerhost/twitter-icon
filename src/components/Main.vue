@@ -142,12 +142,43 @@
       </v-col>
     </v-row>
 
-    <div class="text-center">
-      <v-btn class="ma-2 mt-5 font-weight-black" color="primary" dark>
-        保存
-        <v-icon dark right> mdi-checkbox-marked-circle </v-icon>
-      </v-btn>
-    </div>
+      <!-- モーダル -->
+      <v-row justify="space-around">
+
+    <v-col cols="auto">
+      <v-dialog
+        transition="dialog-top-transition"
+        max-width="600"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="ma-2 mt-5 font-weight-black"
+            color="primary"
+            v-bind="attrs"
+            v-on="on"
+          >保存
+          <v-icon dark right> mdi-checkbox-marked-circle </v-icon>
+          </v-btn>
+        </template>
+        <template v-slot:default="dialog">
+          <v-card>
+            <v-card-text>
+              <p>🎁完成しました🎁</p>
+              <p>✋画像を長押し、または右クリックで画像を保存してね</p>
+
+              <p>このサービスを是非とも共有してください✌️</p>
+            </v-card-text>
+            <v-card-actions class="justify-end">
+              <v-btn
+                text
+                @click="dialog.value = false"
+              >Close</v-btn>
+            </v-card-actions>
+          </v-card>
+        </template>
+      </v-dialog>
+    </v-col>
+  </v-row>
   </v-container>
 </template>
 
