@@ -99,6 +99,7 @@ export default {
       console.log("rgb :", rgb);
       ctx.fillStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.globalAlpha})`;
       ctx.fillRect(50, 50, 75, 75);
+      canvas.toDataURl();
     },
 
     asyncLoadImage: async function () {

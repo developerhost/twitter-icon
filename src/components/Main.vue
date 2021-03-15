@@ -165,7 +165,7 @@
             <v-card-text>
               <p>🎁完成しました🎁</p>
               <p>✋画像を長押し、または右クリックで画像を保存してね</p>
-
+              <img :src="$emit('canvas')"/>
               <p>このサービスを是非とも共有してください✌️</p>
             </v-card-text>
             <v-card-actions class="justify-end">
