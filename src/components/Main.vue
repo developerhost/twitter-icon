@@ -11,6 +11,7 @@
           :colors="colors.hex"
           :fill-color="fillColor.hex"
           :global-alpha="globalAlpha"
+          @image-created="createdImageUri=$event"
         />
       </div>
 
@@ -165,7 +166,7 @@
             <v-card-text>
               <p>🎁完成しました🎁</p>
               <p>✋画像を長押し、または右クリックで画像を保存してね</p>
-              <img :src="$emit('canvas')"/>
+              <img :src="createdImageUri"/>
               <p>このサービスを是非とも共有してください✌️</p>
             </v-card-text>
             <v-card-actions class="justify-end">
@@ -205,6 +206,7 @@ export default {
       hex:"#000000"
     },
     globalAlpha: 0,
+    createdImageUri:""
   }),
   methods: {
     onFileChange(e) {
