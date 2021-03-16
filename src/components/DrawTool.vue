@@ -93,13 +93,11 @@ export default {
     },
 
     drawStyle: function (canvas) {
-      console.debug("drawStyle : ", this.globalAlpha, this.fillColor);
       const ctx = canvas.getContext("2d");
       const rgb = this.hex2rgb(this.fillColor);
       console.log("rgb :", rgb);
       ctx.fillStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.globalAlpha})`;
       ctx.fillRect(50, 50, 75, 75);
-      canvas.toDataURl();
     },
 
     asyncLoadImage: async function () {
@@ -136,13 +134,15 @@ export default {
       this.drawImage(this.canvas).then(() => {
         this.drawStyle(this.canvas);
         this.drawText(this.canvas, this.canvasText);
+        const imageUri = this.canvas.toDataURL();
+        this.$emit("image-created", imageUri);
       });
     },
   },
 
   watch: {
     uploadedImage: function () {
-      this.drawImage(this.canvas);
+      this.reDraw();
     },
     canvasText: function () {
       this.reDraw();
