@@ -97,7 +97,7 @@ export default {
       const rgb = this.hex2rgb(this.fillColor);
       console.log("rgb :", rgb);
       ctx.fillStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.globalAlpha})`;
-      ctx.fillRect(50, 50, 75, 75);
+      ctx.fillRect(0, 90, 240, 45);
     },
 
     asyncLoadImage: async function () {

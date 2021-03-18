@@ -120,6 +120,7 @@
             src="../assets/img/フォロバします_0226114031.png"
             transition="scale-transition"
             width="100"
+            @click="changeStyle('#000000', '#FFFFFF', 0.5)"
           />
         </v-col>
         <v-col cols="3" sm="2" class="pa-0 mr-5">
@@ -130,6 +131,7 @@
             src="../assets/img/ツイキャスicon_0226114049.png"
             transition="scale-transition"
             width="100"
+            @click="changeStyle('#FFFFFF', '#000000', 0.5)"
           />
         </v-col>
       </v-layout>
@@ -163,12 +165,24 @@
         </template>
         <template v-slot:default="dialog">
           <v-card>
-            <v-card-text>
-              <p>🎁完成しました🎁</p>
-              <p>✋画像を長押し、または右クリックで画像を保存してね</p>
-              <img :src="createdImageUri"/>
-              <p>このサービスを是非とも共有してください✌️</p>
+            <v-toolbar
+            color="primary"
+            dark
+            class="justify-center text-center title"
+            >
+              🎁完成しました🎁
+            </v-toolbar>
+            <v-card-text class="justify-center text-center">
+              
+              <div class="font-weight-medium title justify-center text-center my-3">✋画像を長押し、または右クリックで画像を保存してね</div>
+              <img class="justify-center text-center img-radius" :src="createdImageUri"/>
+              <div class="font-weight-medium title justify-center text-center">このサービスを是非とも共有してください✌️</div>
             </v-card-text>
+            <div class="text-center">
+                <v-btn large class="mb-2" color="primary" @click="tweet()"
+                  >ツイート</v-btn
+                >
+              </div>
             <v-card-actions class="justify-end">
               <v-btn
                 text
@@ -233,9 +247,24 @@ export default {
       this.globalAlpha = globalAlpha;
       console.log("change");
     },
+    tweet() {
+      var shareURL =
+        "https://twitter.com/intent/tweet?text=" +
+        "Twitterアイコンメーカーでアイコンを作ろう！" +
+        "%20%23Twitterアイコンメーカー" +
+        "&url=" +
+        "https://twitter-icon-3233d.web.app";
+      location.href = shareURL;
+    },
   },
 };
 </script>
+
+<style>
+.img-radius {
+  border-radius: 50%;
+}
+</style>
 
 
 
