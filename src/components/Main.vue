@@ -168,19 +168,22 @@
             <v-toolbar
             color="primary"
             dark
-            class="justify-center text-center title"
+            class="justify-center text-center title bold"
             >
+            <div class="justify-center text-center title font-weight-bold py-3 mx-auto">
               🎁完成しました🎁
-            </v-toolbar>
-            <v-card-text class="justify-center text-center">
+            </div>
               
-              <div class="font-weight-medium title justify-center text-center my-3">✋画像を長押し、または右クリックで画像を保存してね</div>
+            </v-toolbar>
+            <v-card-text class="justify-center text-center bold">
+              
+              <div class="font-weight-medium title justify-center text-center my-3 font-weight-bold">✋画像を長押し、または右クリックで画像を保存してね</div>
               <img class="justify-center text-center img-radius" :src="createdImageUri"/>
-              <div class="font-weight-medium title justify-center text-center">このサービスを是非とも共有してください✌️</div>
+              <div class="font-weight-medium title justify-center text-center font-weight-bold">このサービスを是非とも共有してください✌️</div>
             </v-card-text>
             <div class="text-center">
-                <v-btn large class="mb-2" color="primary" @click="tweet()"
-                  >ツイート</v-btn
+                <v-btn large class="mb-2 font-weight-bold" color="primary" @click="tweet()"
+                  >ツイートする</v-btn
                 >
               </div>
             <v-card-actions class="justify-end">
@@ -263,6 +266,7 @@ export default {
 <style>
 .img-radius {
   border-radius: 50%;
+  border: 1px solid #000000;
 }
 </style>
 
