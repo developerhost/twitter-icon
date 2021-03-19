@@ -1,8 +1,12 @@
 <template>
   <v-container>
     <v-row class="text-center" justify="center">
+      <!-- 新しい手法 -->
+      <image-input v-model="onFileChange"/>
+
       <!-- アップロードした画像を表示 -->
       <div id="app">
+        
         <input type="file" v-on:change="onFileChange" />
         <DrawTool
           :canvas-text="canvasText"
@@ -12,6 +16,7 @@
           :fill-color="fillColor.hex"
           :global-alpha="globalAlpha"
           @image-created="createdImageUri=$event"
+          v-on:change="onFileChange"
         />
       </div>
 
@@ -204,11 +209,13 @@
 // キャンバス用コンポーネントの読み込み
 import DrawTool from "./DrawTool.vue";
 import { Chrome } from "vue-color";
+import ImageInput from "./ImageInput"
 
 export default {
   components: {
     DrawTool,
     "chrome-picker": Chrome,
+    ImageInput
   },
   name: "Main",
 
