@@ -61,7 +61,7 @@ export default {
       const ctx = canvas.getContext("2d");
 
       // キャンバスに画像を描画（開始位置0,0）
-      ctx.drawImage(image, 20, 20, image.width, image.height);
+      ctx.drawImage(image, 0, 0, image.width, image.height);
       console.log(image.width);
       console.log(image.height);
     },
