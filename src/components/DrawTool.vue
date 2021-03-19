@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>画像を表示</h1>
     <div id="canvas-area">
       <canvas
         id="myCanvas"
@@ -62,7 +61,7 @@ export default {
       const ctx = canvas.getContext("2d");
 
       // キャンバスに画像を描画（開始位置0,0）
-      ctx.drawImage(image, 0, 0, image.width, image.height);
+      ctx.drawImage(image, 20, 20, image.width, image.height);
       console.log(image.width);
       console.log(image.height);
     },
@@ -88,7 +87,7 @@ export default {
       var x = canvas.width / 2;
       var y = canvas.height / 2;
 
-      ctx.fillText(text, x, y);
+      ctx.fillText(text, x, y+10);
       console.log(text);
     },
 
@@ -97,7 +96,7 @@ export default {
       const rgb = this.hex2rgb(this.fillColor);
       console.log("rgb :", rgb);
       ctx.fillStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.globalAlpha})`;
-      ctx.fillRect(0, 90, 240, 45);
+      ctx.fillRect(0, 100, 250, 45);
     },
 
     asyncLoadImage: async function () {
