@@ -2,19 +2,20 @@
   <v-container>
     <v-row class="text-center" justify="center">
       <!-- 新しい手法 -->
-      <image-input v-model="uploadedImage" />
-      <!-- アップロードした画像を表示 -->
       <div id="app">
-        <DrawTool
-          :canvas-text="canvasText"
-          :uploadedImage="uploadedImage"
-          :fontVar="fontVar"
-          :colors="colors.hex"
-          :fill-color="fillColor.hex"
-          :global-alpha="globalAlpha"
-          @image-created="createdImageUri=$event"
-        />
+        <image-input v-model="uploadedImage">
+          <DrawTool
+            :canvas-text="canvasText"
+            :uploadedImage="uploadedImage"
+            :fontVar="fontVar"
+            :colors="colors.hex"
+            :fill-color="fillColor.hex"
+            :global-alpha="globalAlpha"
+            @image-created="createdImageUri=$event"
+          />
+        </image-input>
       </div>
+      <!-- アップロードした画像を表示 -->
 
       <v-col cols="12"></v-col>
     </v-row>
@@ -170,7 +171,7 @@ export default {
 
   data: () => ({
     uploadedImage: "",
-    inputedImage:"",
+    inputedImage: "",
     canvasText: "",
     fontVar: "",
     colors: {

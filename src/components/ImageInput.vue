@@ -8,7 +8,8 @@
       @drop.stop="onDrop"
     >
       <input type="file" title @change="onChange" />
-      <p>クリックでファイル選択</p>
+      <!-- <p>クリックでファイル選択</p> -->
+      <slot></slot>
     </div>
   </div>
 </template>
