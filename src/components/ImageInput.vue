@@ -22,9 +22,9 @@ export default {
     };
   },
   computed: {
-    uploadedImage: {
+    image: {
       set(value) {
-        this.$emit("input", value);
+        this.$emit("input", value.src);
       },
       get() {
         return this.value;
@@ -44,6 +44,7 @@ export default {
       this.readImage(files[0]);
     },
     onChange(event) {
+      console.debug("onchange ,",event)
       const files = event.target.files;
       if (files.length !== 1 || files[0].type.indexOf("image") !== 0) {
         return;
@@ -58,6 +59,7 @@ export default {
     loadImage(e) {
       let image = new Image();
       image.src = e.target.result;
+      console.debug(`loadImage : ${image.src}`)
       this.image = image;
     },
   },
@@ -70,7 +72,7 @@ export default {
   width: 300px;
   height: 300px;
 }
-.image-input__field {
+.image-input-field {
   width: 100%;
   height: 100%;
   position: relative;
@@ -78,10 +80,10 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.image-input__field.over {
+.image-input-field.over {
   background-color: #666;
 }
-.image-input__field > input {
+.image-input-field > input {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -90,7 +92,7 @@ export default {
   opacity: 0;
   cursor: pointer;
 }
-.image-input__field > p {
+.image-input-field > p {
   color: #aaa;
   text-align: center;
 }

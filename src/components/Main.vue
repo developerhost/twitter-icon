@@ -2,11 +2,9 @@
   <v-container>
     <v-row class="text-center" justify="center">
       <!-- 新しい手法 -->
-      <image-input v-model="onFileChange" />
-
+      <image-input v-model="uploadedImage" />
       <!-- アップロードした画像を表示 -->
       <div id="app">
-        <input type="file" v-on:change="onFileChange" />
         <DrawTool
           :canvas-text="canvasText"
           :uploadedImage="uploadedImage"
@@ -15,7 +13,6 @@
           :fill-color="fillColor.hex"
           :global-alpha="globalAlpha"
           @image-created="createdImageUri=$event"
-          v-on:change="onFileChange"
         />
       </div>
 
@@ -173,6 +170,7 @@ export default {
 
   data: () => ({
     uploadedImage: "",
+    inputedImage:"",
     canvasText: "",
     fontVar: "",
     colors: {
@@ -185,18 +183,6 @@ export default {
     createdImageUri: "",
   }),
   methods: {
-    onFileChange(e) {
-      let files = e.target.files || e.dataTransfer.files;
-      this.createImage(files[0]);
-    },
-    // アップロードした画像を表示
-    createImage(file) {
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.uploadedImage = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
     changeMessage: function (newText) {
       this.canvasText = newText;
     },
