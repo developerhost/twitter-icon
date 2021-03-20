@@ -7,8 +7,8 @@
       @dragleave="onDrag('leave')"
       @drop.stop="onDrop"
     >
-    <input type="file" title @change="onChange">
-    <p>クリックでファイル選択</p>
+      <input type="file" title @change="onChange" />
+      <p>クリックでファイル選択</p>
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
   props: ["value"],
   data() {
     return {
-      isDragOver: false
+      isDragOver: false,
     };
   },
   computed: {
@@ -28,8 +28,8 @@ export default {
       },
       get() {
         return this.value;
-      }
-    }
+      },
+    },
   },
   methods: {
     onDrag(type) {
@@ -38,14 +38,14 @@ export default {
     onDrop(event) {
       this.isDragOver = false;
       const files = event.dataTransfer.files;
-      if(files.length !== 1 || files[0].type.indexOf("image") !== 0) {
+      if (files.length !== 1 || files[0].type.indexOf("image") !== 0) {
         return;
       }
       this.readImage(files[0]);
     },
     onChange(event) {
       const files = event.target.files;
-      if(files.length !== 1 || files[0].type.indexOf("image") !== 0) {
+      if (files.length !== 1 || files[0].type.indexOf("image") !== 0) {
         return;
       }
       this.readImage(files[0]);
@@ -59,9 +59,9 @@ export default {
       let image = new Image();
       image.src = e.target.result;
       this.image = image;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
