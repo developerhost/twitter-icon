@@ -2,25 +2,22 @@
   <v-container>
     <v-row class="text-center" justify="center">
       <!-- 新しい手法 -->
-      <image-input v-model="onFileChange"/>
-
-      <!-- アップロードした画像を表示 -->
       <div id="app">
-        
-        <input type="file" v-on:change="onFileChange" />
-        <DrawTool
-          :canvas-text="canvasText"
-          :uploadedImage="uploadedImage"
-          :fontVar="fontVar"
-          :colors="colors.hex"
-          :fill-color="fillColor.hex"
-          :global-alpha="globalAlpha"
-          @image-created="createdImageUri=$event"
-          v-on:change="onFileChange"
-        />
+        <image-input v-model="uploadedImage">
+          <DrawTool
+            :canvas-text="canvasText"
+            :uploadedImage="uploadedImage"
+            :fontVar="fontVar"
+            :colors="colors.hex"
+            :fill-color="fillColor.hex"
+            :global-alpha="globalAlpha"
+            @image-created="createdImageUri=$event"
+          />
+        </image-input>
       </div>
+      <!-- アップロードした画像を表示 -->
 
-      <v-col cols="12"> </v-col>
+      <v-col cols="12"></v-col>
     </v-row>
 
     <v-row class="ml-2">
@@ -37,32 +34,15 @@
         <v-row>
           <v-menu transition="slide-x-transition">
             <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                color="primary"
-                class="ma-2 font-weight-black"
-                v-bind="attrs"
-                v-on="on"
-              >
-                テンプレート
-              </v-btn>
+              <v-btn color="primary" class="ma-2 font-weight-black" v-bind="attrs" v-on="on">テンプレート</v-btn>
             </template>
 
             <v-list>
-              <v-list-item @click="changeMessage('DM返しません')">
-                DM返しません
-              </v-list-item>
-              <v-list-item @click="changeMessage('フォロバします')">
-                フォロバします
-              </v-list-item>
-              <v-list-item @click="changeMessage('ツイキャス')">
-                ツイキャス
-              </v-list-item>
-              <v-list-item @click="changeMessage('ネタツイ垢')">
-                ネタツイ垢
-              </v-list-item>
-              <v-list-item @click="changeMessage('リプ歓迎')">
-                リプ歓迎
-              </v-list-item>
+              <v-list-item @click="changeMessage('DM返しません')">DM返しません</v-list-item>
+              <v-list-item @click="changeMessage('フォロバします')">フォロバします</v-list-item>
+              <v-list-item @click="changeMessage('ツイキャス')">ツイキャス</v-list-item>
+              <v-list-item @click="changeMessage('ネタツイ垢')">ネタツイ垢</v-list-item>
+              <v-list-item @click="changeMessage('リプ歓迎')">リプ歓迎</v-list-item>
             </v-list>
           </v-menu>
         </v-row>
@@ -70,29 +50,14 @@
         <v-row>
           <v-menu transition="slide-x-transition">
             <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                color="primary"
-                class="ma-2 font-weight-black"
-                v-bind="attrs"
-                v-on="on"
-              >
-                フォント
-              </v-btn>
+              <v-btn color="primary" class="ma-2 font-weight-black" v-bind="attrs" v-on="on">フォント</v-btn>
             </template>
             <v-list>
-              <v-list-item @click="changeFont('あおぞら明朝')">
-                あおぞら明朝
-              </v-list-item>
-              <v-list-item @click="changeFont('ヒラギノ丸ゴ ProN')">
-                ヒラギノ丸ゴ ProN
-              </v-list-item>
-              <v-list-item @click="changeFont('あくあフォント')">
-                あくあフォント
-              </v-list-item>
-              <v-list-item @click="changeFont('クレー')"> クレー </v-list-item>
-              <v-list-item @click="changeFont('けいふぉんと仮名')">
-                けいふぉんと仮名
-              </v-list-item>
+              <v-list-item @click="changeFont('あおぞら明朝')">あおぞら明朝</v-list-item>
+              <v-list-item @click="changeFont('ヒラギノ丸ゴ ProN')">ヒラギノ丸ゴ ProN</v-list-item>
+              <v-list-item @click="changeFont('あくあフォント')">あくあフォント</v-list-item>
+              <v-list-item @click="changeFont('クレー')">クレー</v-list-item>
+              <v-list-item @click="changeFont('けいふぉんと仮名')">けいふぉんと仮名</v-list-item>
             </v-list>
           </v-menu>
         </v-row>
@@ -150,58 +115,43 @@
       </v-col>
     </v-row>
 
-      <!-- モーダル -->
-      <v-row justify="space-around">
-
-    <v-col cols="auto">
-      <v-dialog
-        transition="dialog-top-transition"
-        max-width="600"
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            class="ma-2 mt-5 font-weight-black"
-            color="primary"
-            v-bind="attrs"
-            v-on="on"
-          >保存
-          <v-icon dark right> mdi-checkbox-marked-circle </v-icon>
-          </v-btn>
-        </template>
-        <template v-slot:default="dialog">
-          <v-card>
-            <v-toolbar
-            color="primary"
-            dark
-            class="justify-center text-center title bold"
-            >
-            <div class="justify-center text-center title font-weight-bold py-3 mx-auto">
-              🎁完成しました🎁
-            </div>
-              
-            </v-toolbar>
-            <v-card-text class="justify-center text-center bold">
-              
-              <div class="font-weight-medium title justify-center text-center my-3 font-weight-bold">✋画像を長押し、または右クリックで画像を保存してね</div>
-              <img class="justify-center text-center img-radius" :src="createdImageUri"/>
-              <div class="font-weight-medium title justify-center text-center font-weight-bold">このサービスを是非とも共有してください✌️</div>
-            </v-card-text>
-            <div class="text-center">
-                <v-btn large class="mb-2 font-weight-bold" color="primary" @click="tweet()"
-                  >ツイートする</v-btn
-                >
+    <!-- モーダル -->
+    <v-row justify="space-around">
+      <v-col cols="auto">
+        <v-dialog transition="dialog-top-transition" max-width="600">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn class="ma-2 mt-5 font-weight-black" color="primary" v-bind="attrs" v-on="on">
+              保存
+              <v-icon dark right>mdi-checkbox-marked-circle</v-icon>
+            </v-btn>
+          </template>
+          <template v-slot:default="dialog">
+            <v-card>
+              <v-toolbar color="primary" dark class="justify-center text-center title bold">
+                <div
+                  class="justify-center text-center title font-weight-bold py-3 mx-auto"
+                >🎁完成しました🎁</div>
+              </v-toolbar>
+              <v-card-text class="justify-center text-center bold">
+                <div
+                  class="font-weight-medium title justify-center text-center my-3 font-weight-bold"
+                >✋画像を長押し、または右クリックで画像を保存してね</div>
+                <img class="justify-center text-center img-radius" :src="createdImageUri" />
+                <div
+                  class="font-weight-medium title justify-center text-center font-weight-bold"
+                >このサービスを是非とも共有してください✌️</div>
+              </v-card-text>
+              <div class="text-center">
+                <v-btn large class="mb-2 font-weight-bold" color="primary" @click="tweet()">ツイートする</v-btn>
               </div>
-            <v-card-actions class="justify-end">
-              <v-btn
-                text
-                @click="dialog.value = false"
-              >Close</v-btn>
-            </v-card-actions>
-          </v-card>
-        </template>
-      </v-dialog>
-    </v-col>
-  </v-row>
+              <v-card-actions class="justify-end">
+                <v-btn text @click="dialog.value = false">Close</v-btn>
+              </v-card-actions>
+            </v-card>
+          </template>
+        </v-dialog>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -209,42 +159,31 @@
 // キャンバス用コンポーネントの読み込み
 import DrawTool from "./DrawTool.vue";
 import { Chrome } from "vue-color";
-import ImageInput from "./ImageInput"
+import ImageInput from "./ImageInput";
 
 export default {
   components: {
     DrawTool,
     "chrome-picker": Chrome,
-    ImageInput
+    ImageInput,
   },
   name: "Main",
 
   data: () => ({
     uploadedImage: "",
+    inputedImage: "",
     canvasText: "",
     fontVar: "",
     colors: {
       hex: "#194d33",
     },
-    fillColor:{
-      hex:"#000000"
+    fillColor: {
+      hex: "#000000",
     },
     globalAlpha: 0,
-    createdImageUri:""
+    createdImageUri: "",
   }),
   methods: {
-    onFileChange(e) {
-      let files = e.target.files || e.dataTransfer.files;
-      this.createImage(files[0]);
-    },
-    // アップロードした画像を表示
-    createImage(file) {
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.uploadedImage = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
     changeMessage: function (newText) {
       this.canvasText = newText;
     },
