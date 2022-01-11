@@ -62,8 +62,8 @@ export default {
 
       // キャンバスに画像を描画（開始位置0,0）
       ctx.drawImage(image, 0, 0, image.width, image.height);
-      console.log(image.width);
-      console.log(image.height);
+      console.log("image-width",image.width);
+      console.log("image--height",image.height);
     },
 
     drawText: function (canvas, text) {
@@ -109,6 +109,7 @@ export default {
         } else {
           img.src = this.uploadedImage;
         }
+        console.log("image",img);
       });
     },
 
