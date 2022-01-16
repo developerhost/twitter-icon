@@ -3,8 +3,8 @@
     <div id="canvas-area">
       <canvas
         id="myCanvas"
-        width="250px"
-        height="250px"
+        width="192px"
+        height="294px"
         class="canvas"
       ></canvas>
     </div>
@@ -18,6 +18,8 @@
 </style>
 
 <script>
+import imgSrc from "@/assets/img/comp.jpg";
+
 export default {
   name: "DrawTool",
   props: [
@@ -33,8 +35,8 @@ export default {
       canvas: null,
       context: null,
       isDrag: false,
-      max_width: 250,
-      max_height: 250,
+      max_width: 192,
+      max_height: 294,
     };
   },
 
@@ -99,13 +101,15 @@ export default {
       ctx.fillRect(0, 100, 250, 45);
     },
 
+
+    //ここが問題
     asyncLoadImage: async function () {
       return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => resolve(img);
         img.onerror = (e) => reject(e);
         if (!this.uploadedImage) {
-          img.src = "/img/img.jpg";
+          img.src = imgSrc;
         } else {
           img.src = this.uploadedImage;
         }
@@ -166,6 +170,6 @@ export default {
 
 <style scoped>
 .canvas {
-  border-radius: 50%;
+  border: solid;
 }
 </style>

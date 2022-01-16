@@ -13,7 +13,7 @@
       />
 
       <div class="subtitle-1 font-weight-bold">
-        Twitterアイコンメーカー
+        自己紹介カードメーカー
       </div>
     </div>
       <v-row no-gutters class="justify-center">
@@ -73,7 +73,7 @@
         </v-layout>
         
         <div class="subtitle-1 font-weight-bold mt-5">
-        ＼簡単にアイコンに文字入れできます／
+        ＼簡単にフォロワーが増えます／
       </div>
       </v-row>
       </div>
