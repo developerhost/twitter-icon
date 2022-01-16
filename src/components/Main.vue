@@ -6,6 +6,9 @@
         <image-input v-model="uploadedImage">
           <DrawTool
             :canvas-text="canvasText"
+            :canvas-text2="canvasText2"
+            :canvas-text3="canvasText3"
+            :canvas-text4="canvasText4"
             :uploadedImage="uploadedImage"
             :fontVar="fontVar"
             :colors="colors.hex"
@@ -24,28 +27,36 @@
       <v-col class="mb-4">
         <div class="font-weight-medium title mb-3">✏️テキスト</div>
         <v-text-field
-          placeholder="テキストを入力"
+          placeholder="名前を入力"
           solo
           class="mx-auto"
           id="canvas_text"
           v-model="canvasText"
         ></v-text-field>
 
-        <v-row>
-          <v-menu transition="slide-x-transition">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" class="ma-2 font-weight-black" v-bind="attrs" v-on="on">テンプレート</v-btn>
-            </template>
+        <v-text-field
+          placeholder="動物を入力"
+          solo
+          class="mx-auto"
+          id="canvas_text2"
+          v-model="canvasText2"
+        ></v-text-field>
 
-            <v-list>
-              <v-list-item @click="changeMessage('DM返しません')">DM返しません</v-list-item>
-              <v-list-item @click="changeMessage('フォロバします')">フォロバします</v-list-item>
-              <v-list-item @click="changeMessage('ツイキャス')">ツイキャス</v-list-item>
-              <v-list-item @click="changeMessage('ネタツイ垢')">ネタツイ垢</v-list-item>
-              <v-list-item @click="changeMessage('リプ歓迎')">リプ歓迎</v-list-item>
-            </v-list>
-          </v-menu>
-        </v-row>
+        <v-text-field
+          placeholder="好きなタイプを入力"
+          solo
+          class="mx-auto"
+          id="canvas_text3"
+          v-model="canvasText3"
+        ></v-text-field>
+
+        <v-text-field
+          placeholder="座右の銘を入力"
+          solo
+          class="mx-auto"
+          id="canvas_text4"
+          v-model="canvasText4"
+        ></v-text-field>
 
         <v-row>
           <v-menu transition="slide-x-transition">
@@ -173,6 +184,9 @@ export default {
     uploadedImage: "",
     inputedImage: "",
     canvasText: "",
+    canvasText2: "",
+    canvasText3: "",
+    canvasText4: "",
     fontVar: "",
     colors: {
       hex: "#194d33",
@@ -186,6 +200,15 @@ export default {
   methods: {
     changeMessage: function (newText) {
       this.canvasText = newText;
+    },
+    changeMessage2: function (newText) {
+      this.canvasText2 = newText;
+    },
+    changeMessage3: function (newText) {
+      this.canvasText3 = newText;
+    },
+    changeMessage4: function (newText) {
+      this.canvasText4 = newText;
     },
     changeFont: function (newFontName) {
       this.fontVar = newFontName;
@@ -211,7 +234,6 @@ export default {
 
 <style>
 .img-radius {
-  border-radius: 50%;
   border: 1px solid #000000;
 }
 </style>
