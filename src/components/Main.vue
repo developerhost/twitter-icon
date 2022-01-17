@@ -1,8 +1,9 @@
 <template>
   <v-container>
-    <v-row class="text-center" justify="center">
+    <v-row class="text-center my-auto" justify="center">
       <!-- 新しい手法 -->
-      <div id="app">
+      
+      <div id="app" class="pd">
         <image-input v-model="uploadedImage">
           <DrawTool
             :canvas-text="canvasText"
@@ -30,7 +31,7 @@
       <v-col cols="12"></v-col>
     </v-row>
 
-    <v-row class="ml-2">
+    <v-row class="ml-2 ">
       <v-col class="mb-4">
         <div class="font-weight-medium title mb-3">✏️テキスト</div>
         <v-text-field
@@ -133,49 +134,6 @@
 
     <v-row class="ml-2">
       <v-col>
-        <div class="font-weight-medium title mb-3">🎨スタイル</div>
-      </v-col>
-    </v-row>
-    <v-row no-gutters class="justify-center">
-      <v-layout wrap>
-        <v-col cols="3" sm="2" class="pa-0 mx-5">
-          <v-img
-            alt="Vuetify Logo"
-            class="shrink pa-0"
-            contain
-            src="../assets/img/DM返しません_0226114010.png"
-            transition="scale-transition"
-            width="100"
-            @click="changeStyle('#FFFFFF', '#646766', 0.5)"
-          />
-        </v-col>
-        <v-col cols="3" sm="2" class="pa-0 mr-5">
-          <v-img
-            alt="Vuetify Logo"
-            class="shrink mr-2"
-            contain
-            src="../assets/img/フォロバします_0226114031.png"
-            transition="scale-transition"
-            width="100"
-            @click="changeStyle('#000000', '#FFFFFF', 0.5)"
-          />
-        </v-col>
-        <v-col cols="3" sm="2" class="pa-0 mr-5">
-          <v-img
-            alt="Vuetify Logo"
-            class="shrink mr-2"
-            contain
-            src="../assets/img/ツイキャスicon_0226114049.png"
-            transition="scale-transition"
-            width="100"
-            @click="changeStyle('#FFFFFF', '#000000', 0.5)"
-          />
-        </v-col>
-      </v-layout>
-    </v-row>
-
-    <v-row class="ml-2">
-      <v-col>
         <div class="font-weight-medium title mb-3">🛠設定</div>
         <div>文字の色</div>
         <chrome-picker v-model="colors" />
@@ -252,7 +210,7 @@ export default {
     canvasText11: "",
     fontVar: "",
     colors: {
-      hex: "#194d33",
+      hex: "#000000",
     },
     fillColor: {
       hex: "#000000",
@@ -306,8 +264,8 @@ export default {
     tweet() {
       var shareURL =
         "https://twitter.com/intent/tweet?text=" +
-        "Twitterアイコンメーカーでアイコンを作ろう！" +
-        "%20%23Twitterアイコンメーカー" +
+        "自己紹介メーカーでカードを作ろう！" +
+        "%20%23Twitter自己紹介メーカー" +
         "&url=" +
         "https://twitter-icon-3233d.web.app";
       location.href = shareURL;
@@ -319,6 +277,11 @@ export default {
 <style>
 .img-radius {
   border: 1px solid #000000;
+}
+
+.pd {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 </style>
 

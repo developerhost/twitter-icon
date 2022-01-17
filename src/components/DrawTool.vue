@@ -3,8 +3,8 @@
     <div id="canvas-area">
       <canvas
         id="myCanvas"
-        width="192px"
-        height="294px"
+        width="288px"
+        height="441px"
         class="canvas"
       ></canvas>
     </div>
@@ -18,7 +18,7 @@
 </style>
 
 <script>
-import imgSrc from "@/assets/img/192.jpg";
+import imgSrc from "@/assets/img/576.png";
 import iconSrc from "@/assets/img/img.jpg";
 
 export default {
@@ -46,10 +46,10 @@ export default {
       canvas: null,
       context: null,
       isDrag: false,
-      max_width: 192,
-      max_height: 294,
-      icon_max_width: 75,
-      icon_max_height: 75
+      max_width: 288,
+      max_height: 441,
+      icon_max_width: 115,
+      icon_max_height: 115
     };
   },
 
@@ -86,7 +86,7 @@ export default {
 
       // キャンバスに画像を描画（開始位置0,0）
       ctx.drawImage(image, 0, 0, image.width, image.height);
-      ctx.drawImage(image2, 100, 20, image2.width, image2.height);
+      ctx.drawImage(image2, 145, 30, image2.width, image2.height);
       console.log("image-width",image.width);
       console.log("image--height",image.height);
     },
@@ -95,13 +95,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 16px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 16px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -109,8 +109,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 40;
-      var y = canvas.height / 4;
+      var x = 65;
+      var y = 120;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -120,13 +120,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -134,8 +134,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 120;
+      var x = 180;
+      var y = 187;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -145,13 +145,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -159,8 +159,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 135;
+      var x = 180;
+      var y = 210;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -170,13 +170,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -184,8 +184,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 155;
+      var x = 180;
+      var y = 233;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -194,13 +194,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -208,8 +208,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 170;
+      var x = 180;
+      var y = 256;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -218,13 +218,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -232,8 +232,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 185;
+      var x = 180;
+      var y = 280;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -242,13 +242,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -256,8 +256,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 200;
+      var x = 180;
+      var y = 304;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -266,13 +266,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -280,8 +280,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 215;
+      var x = 180;
+      var y = 327;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -290,13 +290,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -304,8 +304,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 230;
+      var x = 180;
+      var y = 351;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -314,13 +314,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -328,8 +328,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 245;
+      var x = 180;
+      var y = 375;
 
       ctx.fillText(text, x, y+10);
       console.log(text);
@@ -338,13 +338,13 @@ export default {
       const ctx = canvas.getContext("2d");
       //文字のスタイルを指定
       if (this.fontVar == "") {
-        ctx.font = "bold 8px San Francisco"; //ここを変数に
+        ctx.font = "bold 12px San Francisco"; //ここを変数に
       } else {
-        ctx.font = `bold 8px ${this.fontVar}`;
+        ctx.font = `bold 12px ${this.fontVar}`;
       }
 
       if (this.colors == "") {
-        ctx.fillStyle = "#404040";
+        ctx.fillStyle = "#000000";
       } else {
         ctx.fillStyle = this.colors;
       }
@@ -352,8 +352,8 @@ export default {
       ctx.textBaseline = "center";
       ctx.textAlign = "center";
       //座標を指定して文字を描く（座標は画像の中心に）
-      var x = 120;
-      var y = 260;
+      var x = 180;
+      var y = 399;
 
       ctx.fillText(text, x, y+10);
       console.log(text);

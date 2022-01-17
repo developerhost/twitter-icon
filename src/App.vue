@@ -79,11 +79,13 @@
       </div>
     </v-container>
 
-
+<v-row class="my-50">
     <v-main>
       <Main />
     </v-main>
-  </v-app>
+
+</v-row
+>  </v-app>
 </template>
 
 <script>
