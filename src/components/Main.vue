@@ -9,6 +9,13 @@
             :canvas-text2="canvasText2"
             :canvas-text3="canvasText3"
             :canvas-text4="canvasText4"
+            :canvas-text5="canvasText5"
+            :canvas-text6="canvasText6"
+            :canvas-text7="canvasText7"
+            :canvas-text8="canvasText8"
+            :canvas-text9="canvasText9"
+            :canvas-text10="canvasText10"
+            :canvas-text11="canvasText11"
             :uploadedImage="uploadedImage"
             :fontVar="fontVar"
             :colors="colors.hex"
@@ -56,6 +63,55 @@
           class="mx-auto"
           id="canvas_text4"
           v-model="canvasText4"
+        ></v-text-field>
+        <v-text-field
+          placeholder="アリナシを入力"
+          solo
+          class="mx-auto"
+          id="canvas_text5"
+          v-model="canvasText5"
+        ></v-text-field>
+        <v-text-field
+          placeholder="会える会えないを入力"
+          solo
+          class="mx-auto"
+          id="canvas_text6"
+          v-model="canvasText6"
+        ></v-text-field>
+        <v-text-field
+          placeholder="幸せな時を入力"
+          solo
+          class="mx-auto"
+          id="canvas_text7"
+          v-model="canvasText7"
+        ></v-text-field>
+        <v-text-field
+          placeholder="特技を入力"
+          solo
+          class="mx-auto"
+          id="canvas_text8"
+          v-model="canvasText8"
+        ></v-text-field>
+        <v-text-field
+          placeholder="何考えてるか入力"
+          solo
+          class="mx-auto"
+          id="canvas_text9"
+          v-model="canvasText9"
+        ></v-text-field>
+        <v-text-field
+          placeholder="何点かを入力"
+          solo
+          class="mx-auto"
+          id="canvas_text10"
+          v-model="canvasText10"
+        ></v-text-field>
+        <v-text-field
+          placeholder="一言を入力"
+          solo
+          class="mx-auto"
+          id="canvas_text11"
+          v-model="canvasText11"
         ></v-text-field>
 
         <v-row>
@@ -187,6 +243,13 @@ export default {
     canvasText2: "",
     canvasText3: "",
     canvasText4: "",
+    canvasText5: "",
+    canvasText6: "",
+    canvasText7: "",
+    canvasText8: "",
+    canvasText9: "",
+    canvasText10: "",
+    canvasText11: "",
     fontVar: "",
     colors: {
       hex: "#194d33",
@@ -209,6 +272,27 @@ export default {
     },
     changeMessage4: function (newText) {
       this.canvasText4 = newText;
+    },
+    changeMessage5: function (newText) {
+      this.canvasText5 = newText;
+    },
+    changeMessage6: function (newText) {
+      this.canvasText6 = newText;
+    },
+    changeMessage7: function (newText) {
+      this.canvasText7 = newText;
+    },
+    changeMessage8: function (newText) {
+      this.canvasText8 = newText;
+    },
+    changeMessage9: function (newText) {
+      this.canvasText9 = newText;
+    },
+    changeMessage10: function (newText) {
+      this.canvasText10 = newText;
+    },
+    changeMessage11: function (newText) {
+      this.canvasText11 = newText;
     },
     changeFont: function (newFontName) {
       this.fontVar = newFontName;
